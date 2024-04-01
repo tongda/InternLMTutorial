@@ -1,4 +1,4 @@
-# 开始实战
+<img width="1453" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/2ce527aa-ec65-486e-b2b7-f139e8759296"># 开始实战
 
 下面就是我自己运行实战 Demo 的一些截图例子。
 
@@ -62,4 +62,50 @@ User  >>>
 
 <img width="1458" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/e04cbd1d-7320-417b-8527-4f0ae7beb863">
 
-### 任务三：
+### 任务三：Lagent 数据分析
+
+按照文档说明一步步执行，就可以通过本地端口打开远程映射的页面，这里我自己配了 SSH Key，不用输入密码。
+
+<img width="1462" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/b527985f-d5a2-4b83-a2b7-2fa5e55468df">
+
+输入第一个例子：
+
+<img width="1459" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/38e11783-2b80-4d45-afe7-ad1ad6c36fbd">
+
+因为 30% 这个资源排队排了很久才创建出来，不能只玩这一个 demo，所以试了试其他的。
+
+1. 计算斐波那契数列
+
+<img width="1453" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/5e24671d-e27b-431a-80d7-f3fa7dcfafee">
+
+看起来这种简单的 Python 小任务都不在话下，那我们试试数据分析吧。
+
+2. csv 数据分析
+
+使用 Kaggle 上的数据，包含[历次 007 系列电影的信息](https://www.kaggle.com/datasets/dreb87/jamesbond?resource=download)，一共 25 行 27 列。
+
+<img width="1452" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/c9b8ce3f-c93f-4d38-9085-40026affa2b4">
+
+很明显，对于 csv 文件头的理解是不对的，模型有点脑补了，我们试试看它能不能通过命令引导进行纠正。
+
+<img width="1452" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/8cf00af4-601a-4243-a5a4-b3b451031892">
+
+还不错，通过简单的引导说明，可以正确给出结果了。
+
+试着问了一个稍微复杂一些的问题：Bond 列是演员的名字，收入使用 World_Adj，成本使用 Budget_Adj，计算哪位演员的总利润最高。结果模型陷入幻觉了，需要手动停止。
+
+<img width="1049" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/b6a5e372-0f62-4c1e-bad0-10eeac4fc36d">
+
+考虑可能是上下文对模型有干扰，清空缓存重新试了一下：
+
+<img width="1440" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/2f185b49-36a9-406d-8336-20081cf48da9">
+
+出现了报错，没办法，从命令行再重新启动又试了一次：
+
+<img width="1429" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/94b29ace-b1aa-4884-aacc-f240a52eeeb4">
+
+再次报错，看来系统不是很稳定。目前就测到这里吧，一个 7B 的模型能有这样的表现，还是不错的。
+
+### 任务四：灵笔2 测试
+
+等待分配配额中...
