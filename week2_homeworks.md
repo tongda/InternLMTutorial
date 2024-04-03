@@ -1,4 +1,4 @@
-<img width="1453" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/2ce527aa-ec65-486e-b2b7-f139e8759296"># 开始实战
+# 开始实战
 
 下面就是我自己运行实战 Demo 的一些截图例子。
 
@@ -108,4 +108,49 @@ User  >>>
 
 ### 任务四：灵笔2 测试
 
-等待分配配额中...
+首先是安装依赖：
+
+<img width="1462" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/6083c5e9-cf15-4dc9-8774-0d5315b3da44">
+
+从图上看到，依赖有冲突。现在做 AI 项目，开源软件都会有很多依赖，有时甚至要装几百个依赖包，经常会出现依赖包冲突的问题，比如 A 库依赖小于 1.5 版本的 X，而 B 库需要 1.8 版本的 X。说实话，Python 从一开始设计可能就没考虑过有一天社区会发展如此热闹，所以依赖管理真的非常脆弱。
+
+#### 图文写作
+
+<img width="1446" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/751d7b06-1255-4005-9f8a-797871af2aa8">
+
+<img width="1458" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/93fc8404-8adb-4824-830c-5ef40a99d49e">
+
+<img width="1459" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/1ab4195f-99ce-4673-a0d1-b76ff906cc5f">
+
+<img width="1457" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/e44c676a-c87f-40c5-81a7-0d352e781417">
+
+运行过程看起来是先生成文本，再升成图片。文本升成速度挺快的，升成图片的时候等了挺久，实例显存占用 35GB，GPU 占用一直在 85% 以上，还是很消耗资源的。
+
+升成的文章和图效果都不错，但是看起来和视频教程中的结果非常相似，看起来随机性差了点。
+
+<img width="1278" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/d309580e-68c9-496b-b34e-d8510a2259a4">
+
+比较有意思的是，每个升成的段落旁边，有个笔的图标，可以对这一段进行微调，这种段落级别的微调很实用。
+
+<img width="1240" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/b9d85fe0-c570-417a-ae54-e4377a6a6d2d">
+
+<img width="442" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/46a3d38e-f6da-4785-ab0a-4f3057f14231">
+
+灵笔的图文生成功能，看起来图片不像是生成出来的，更像是搜索出来的。如下图所示。前面在生成文章时等了很久才把图片生成出来，看起来像是在图片生成，更可能是在初始化图片库的视觉 token，用来做 RAG 检索。
+
+<img width="511" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/5dd664d5-debf-4265-8710-6c050d7ff994">
+
+#### 图片理解
+
+<img width="1466" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/df263f73-d649-4133-be59-56cbbcfc720d">
+
+看的出来，定性的分析做的还是不错，能看出是电影海报，主角是短发男性，以及科幻元素，但是对图片中的文字识别就比较差了。
+
+扫了一眼源码，应该是将图片通过 VIT 转换成 token，然后将文本和图片的 token 串起来，输入给语言模型进行生成。
+
+试了试多图对比，能够看出这是两台车，这下可以证明小米不是抄袭了，哈哈。
+
+<img width="1314" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/53cdc85c-797e-4ade-8b70-73be6f493ca4">
+
+
+
