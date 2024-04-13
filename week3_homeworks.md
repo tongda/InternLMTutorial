@@ -63,6 +63,8 @@ python3 -m huixiangdou.service.feature_store --sample ./test_queries.json
 
 <img width="1387" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/07511680-3089-4c01-833a-bf0e24318e7d">
 
+### 运行茴香豆
+
 下面就是通过命令行正式运行茴香豆问答，回答几个问题，执行代码`python3 -m huixiangdou.main --standalone`.
 
 执行过程很漫长，主要是每次命令行执行需要重新加载模型，这部分很慢，在后面推理过程就要快很多了。默认输出的 DEBUG 日志，仔细分析一下日志，我们可以大概理解茴香豆的执行过程。
