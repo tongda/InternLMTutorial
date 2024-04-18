@@ -32,5 +32,21 @@
 
 准备启动：
 
+<img width="1150" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/7a74af83-78fc-42bf-9d26-9305503046e9">
 
+第一次测试输出，看来还没学到精髓，哈哈：
+
+<img width="1161" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/815876d6-1649-4b3a-acb2-09c17ca5e5aa">
+
+400 个迭代之后，基本上就学的差不多了。
+
+<img width="1100" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/1a7800e6-dd10-479f-9220-ed219b4d009d">
+
+跑起来试一下：
+
+<img width="1154" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/b6b79a38-8ae0-44ec-8ea5-37d99e186638">
+
+看来过拟合的程度太大了，还是看看原始模型的正常回复吧：
+
+<img width="1156" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/60ce6c6a-deb7-4375-b2e3-8327c3fd2a3e">
 
