@@ -77,5 +77,57 @@
 
 <img width="854" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/bf0ece1b-b659-45ee-b2e6-60068cc514d2">
 
-下一步是要部署个应用到 OpenXLab 上，新注册的账号只能选择 CPU 资源，要 GPU 资源的话需要申请。
+在 OpenXLab 的个人页面可以查看：
 
+<img width="871" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/818dd60a-b550-4740-833c-04492013a58d">
+
+
+下一步是要部署个应用到 OpenXLab 上，新注册的账号只能选择 CPU 资源，要 GPU 资源的话需要申请，感谢小助手，深夜帮我开通权限。把前面的 Xtuner 的 web_demo 稍作修改，改成从 OpenXLab 拉取线上模型。
+
+<img width="858" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/a4a92baa-8baa-4701-8fe8-b0e77cbec9d1">
+
+<img width="711" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/5636c42c-ce42-40f2-80f7-50d35e9a6712">
+
+然后就开始生成应用：
+
+<img width="1449" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/cd48309a-8e0a-45c7-afe6-c02c69b98eeb">
+
+应用持续构建中……
+
+<img width="1071" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/0d18f259-06eb-4354-bc40-e2306eb00f16">
+
+跑这么久，怀疑是安装依赖花了太长时间。依赖分两种：系统环境依赖，Python 运行依赖。系统环境依赖通过 packages.txt 配置，这里只写了一个 git-lfs 用来下载模型文件；运行依赖在 requirements.txt 中包含 einops transformers streamlit 三个依赖库。这种设计挺方便的，直接环境依赖代码化。
+
+
+
+## 进阶作业：VLM 微调
+
+前面的环境准备就不细说了，和基础作业是一样的。直接进入正题，克隆代码，生成数据：
+
+<img width="1104" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/ef3187a3-e273-45d8-a006-9392ec68f779">
+
+学习下数据格式，同一张图片（oph.jpg）,生成了 6 组对话，每组对话进行了 10 轮。然后把这 6 组对话重复 200 遍得到一个数据集。
+
+<img width="1465" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/c86d6900-a0e6-49b6-80c2-6da188537fb2">
+
+修改完配置，直接开训：
+
+<img width="1156" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/44ee4c88-c7ba-40fb-8cc2-1dbf09c444c2">
+
+500 个 iter 之后，看起来学到了一点，又好像没学到：
+
+<img width="1173" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/a84a848d-1283-43da-9219-8ce20a6a903d">
+
+最后全部跑完：
+
+<img width="1166" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/1983d180-f9ee-4e56-a06b-1387a5d7296b">
+
+先看看微调前的模型效果：
+
+<img width="1167" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/2c25a18c-4b0f-4291-82ca-8aa02137d211">
+
+对比微调后的结果：
+
+<img width="1169" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/c7d7218d-3c97-4552-8189-2b323d982de4">
+
+成功！
