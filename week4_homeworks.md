@@ -50,3 +50,32 @@
 
 <img width="1156" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/60ce6c6a-deb7-4375-b2e3-8327c3fd2a3e">
 
+运行 web_demo：
+
+<img width="880" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/f416cfad-bafd-4290-a4be-af6dacfade54">
+
+信仰坚定的小助手：
+
+<img width="1457" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/2cb7c04a-a62e-4535-9c61-253ee733ec04">
+
+
+## 进阶作业：上传 OpenXLab
+
+首先，注册 OpenXLab，然后创建一个模型仓库：
+
+<img width="736" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/030ca6b1-d625-4d19-bbd0-d42cc1c1af32">
+
+在个人账号下面选择管理令牌，这里我选择 ssh 令牌，教程历史 Git 访问令牌，平时用 git 比较习惯 ssh 令牌，所以这里我还是用 ssh 令牌：
+
+<img width="903" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/e105b4d4-65b1-476f-bf86-53d0b803d031">
+
+将上面创建的模型仓库 clone 下来：
+
+<img width="741" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/ccabda70-8dc2-41dc-bb21-b1bd3232506f">
+
+把 /root/ft/final_model 目录下的所有文件拷贝到仓库目录下，然后就可以 commit + push 了：
+
+<img width="854" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/bf0ece1b-b659-45ee-b2e6-60068cc514d2">
+
+下一步是要部署个应用到 OpenXLab 上，新注册的账号只能选择 CPU 资源，要 GPU 资源的话需要申请。
+
