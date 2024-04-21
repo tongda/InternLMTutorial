@@ -98,7 +98,28 @@
 
 跑这么久，怀疑是安装依赖花了太长时间。依赖分两种：系统环境依赖，Python 运行依赖。系统环境依赖通过 packages.txt 配置，这里只写了一个 git-lfs 用来下载模型文件；运行依赖在 requirements.txt 中包含 einops transformers streamlit 三个依赖库。这种设计挺方便的，直接环境依赖代码化。
 
+### 结局
 
+最终经过一天的各种尝试，终于让 App 跑了起来。
+
+<img width="1462" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/12562843-ac9e-482d-b21e-ab752d8593d5">
+
+总结一下这期间发现的经验：
+
+1. 如果配置了 packages.txt，应用构建会明显变慢，甚至会出现构建超时，从日志上看，apt-get 命令已经使用了国内的镜像源，应该不是网络问题，可能是 apt-get 安装环境依赖的过程有什地方等待输入，或者和本地缓存冲突。后来我看到构建时间超过 5 分钟，就直接重新构建，注意重新构建要选择清除数据重新构建；
+
+<img width="1127" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/4ce77828-9444-4f90-a8d5-63f55ea6fa5b">
+
+2. 最终的requirements.txt：
+
+```
+einops
+transformers
+streamlit
+sentencepiece
+```
+
+3. 公开访问的 App 地址：https://openxlab.org.cn/apps/detail/dtong/dalao_repeater
 
 ## 进阶作业：VLM 微调
 
