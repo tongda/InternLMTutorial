@@ -101,3 +101,40 @@ LLM 服务就复用前面已经启动的那个。然后启动 web UI。
 <img width="981" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/e65ae828-762f-447b-a189-6c93fd3691cc">
 
 ### 使用 Lagent 或 AgentLego 实现自定义工具并完成调用
+
+#### 用 AgentLego 自定义工具
+
+参考训练营教程以及[官方文档](https://agentlego.readthedocs.io/zh-cn/latest/modules/tool.html)，总结一下添加自定义工具的几个关键点：
+
+1. 继承`agentlego.tools.BaseTool`类，`BaseTool`提供了统一的输入输出，并且可以转换成 Transformers Agent，LangChain，Lagent 等不同 Agent 框架的格式；
+2. 修改`default_desc`描述，猜测这个会被 agent 解析，在生成工具调用的时候会用来匹配输入；
+3. 实现`setup`和`apply`方法，这两个是实现工具逻辑的核心部分，其中`setup`是用来第一次调用模型时初始化用的，`apply`是之后每次调用工具时执行的方法；
+4. 支持多模态返回，只需要对结果包装一个类即可，比如`AudioIO`，`ImageIO`这种；
+
+接下来创建一个调用 MagicMaker 的工具，按照教程，新的工具实现需要放到`agentlego/agentlego/tools/`目录下，这种需要侵入框架源码的扩展方式不是很好，未来框架升级很麻烦，希望可以改进。我们先创建一个文件，并把代码拷贝进去。
+
+<img width="1141" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/e5c5c87e-256a-46fb-97fa-44d10ad36e57">
+
+比较重要的几个地方：
+
+1. 在`__init__()`方法上加了个`@require`注解，应该是用来标记工具的依赖的，通过这种方式，可以动态按需加载依赖，避免加载 agentlego 框架时，加载大量依赖；
+2. 在`apply()`方法中，调用了 MagicMaker 的 API，并将结果图片下载下来；
+3. `apply()`方法返回的是`ImageIO`，也就是返回一张图片。
+
+接下来启动 WebUI（步骤和前面一样，略过），Agent 选择 InternLM，在 Tools 下面找到 MagicMakerImageGeneration：
+
+<img width="1458" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/adcb0557-e797-443c-9d93-447005ba1a14">
+
+试试它的生成能力：
+
+<img width="962" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/877bab4e-90b2-4d05-8e9c-1b8522d84c08">
+
+可以看到即使我要求它生成写实风格，升成的图片还是国画风格。这主要是因为在代码中默认传入了 `style="guofeng"`，我们试试修改一下。在 Tool 标签页下面，有个初始化参数的选项，注意这里填的是`style="xieshi"`，双引号不能省略。
+
+<img width="1447" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/cdab3f21-e77a-4c15-b5bb-2ac7bbb15865">
+
+然后我们再用相同的提示词生成一下：
+
+<img width="965" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/7778ebeb-e33c-489b-9a2b-2e21c16c500a">
+
+这个效果要更贴近我们的描述了。
