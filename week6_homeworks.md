@@ -129,7 +129,7 @@ LLM 服务就复用前面已经启动的那个。然后启动 web UI。
 
 <img width="962" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/877bab4e-90b2-4d05-8e9c-1b8522d84c08">
 
-可以看到即使我要求它生成写实风格，升成的图片还是国画风格。这主要是因为在代码中默认传入了 `style="guofeng"`，我们试试修改一下。在 Tool 标签页下面，有个初始化参数的选项，注意这里填的是`style="xieshi"`，双引号不能省略。
+可以看到即使我要求它生成写实风格，升成的图片还是国画风格。这主要是因为在代码中默认传入了 `style="guofeng"`，我们试试修改一下。在 Tool 标签页下面，有个初始化参数的选项，注意这里填的是`style="xieshi"`，**双引号不能省略**。
 
 <img width="1447" alt="image" src="https://github.com/tongda/InternLMTutorial/assets/653425/cdab3f21-e77a-4c15-b5bb-2ac7bbb15865">
 
